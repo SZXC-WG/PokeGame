@@ -1,0 +1,45 @@
+CodeCard
+
+A					B
+Score=x					Score=y
+[][]					[]
+
+As this example shows, the basic CodeCard game is for two players against each other,
+the cards have different functions, and theres different states.
+
+ET shorts for 'End of Turn'.
+BT shorts for 'Before Turn'.
+AS shorts for 'Any of the States'.
+IM shorts for 'Immediately'.
+
+/========/
+States
+
+SCORE					Score
+AC x					Score+=100x[IM]
+WA x					Score-=x[IM, x=0]
+TLE x					Score-=x[ET, x=0]
+RE x					Score-=x[BT, x-=10]
+CE x					Can't use any cards except 'DEBUG', which can clean it up[BT, x--].
+MLE x					Score/=x[ET, x=1]
+O x					[TLE]/=x[BT]
+
+/========/
+Cards
+
+BFS[y]->x					x[MLE]+=y
+BINARYSEARCH[y]				[TLE]/=2^y
+BRUTEFORCE[y]->x				x[TLE]+=y
+BUG[y]->x				x[CE]++
+DEBUG					[CE]=0
+DFS[y]->x				x[RE]+=y
+DIJISKRA[y]->x[]				x[][TLE]*=y
+DP[y]->x					x[AS]+=x[AS],x[AS]=0
+GREEDY[y]->x				x[WA]+=x[TLE]+y, x[TLE]=0
+HASH[y]->x				x[MLE]+=x[TLE]*y, x[TLE]=0
+IMITATE[y]->x[]				x[][TLE]+=y
+O[y]					[O]=y
+PRUNE[y]					[TLE]=min([TLE]-y,0)
+QUICKPOW[y]->x				x[TLE]*=2^y
+SPFA[y]->x[]				x[][TLE]+=y
+
